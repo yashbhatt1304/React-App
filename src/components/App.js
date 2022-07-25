@@ -6,19 +6,23 @@ import GetOrderDetails from './Bootstrap/GetOrderDetails';
 import Home from './Bootstrap/Home';
 import About from './Bootstrap/About';
 import Contact from './Bootstrap/Contact';
+import Footer from './Bootstrap/Footer';
 
 class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Header><b>Connect World</b></Header>
+        <Header></Header>
         <Routes>
         <Route exact path="/" element={<Home />}/>
-        <Route exact path="/createorder" element={<CreateOrder />}/>
-        <Route exact path="/getorderdetails" element={<GetOrderDetails />}/>
+        <Route exact path="/createorder" 
+                element={<CreateOrder instruction="Fields marked with * are required"/>}/>
+        <Route exact path="/getorderdetails" 
+                element={<GetOrderDetails instruction="Fields marked with * are required" />}/>
         <Route exact path="/about" element={<About />}/>
         <Route exact path="/contact" element={<Contact />}/>
         </Routes>
+        <Footer/>
       </div>
     )
   }

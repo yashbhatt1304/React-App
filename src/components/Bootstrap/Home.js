@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../stylesheet.css'
 
 const Home = () => {
   return (
-    <div className='home'>
+    <div>
         <h6>Hi User! Choose the right option from below list.</h6>
-        <div className="card" style={{width: '18rem', margin:'auto'}}>
+        <div className="card home">
             <ul className="list-group list-group-flush">
-                <li className="list-group-item">
+                <li className="list-group-item home-list">
                     <Link className="nav-details" to="/createorder">
                         <p style={{margin:'auto'}}>New Order</p>
                     </Link>
