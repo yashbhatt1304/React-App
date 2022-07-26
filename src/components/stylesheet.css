@@ -78,3 +78,9 @@ h6{
     font-style: italic;
     font-size: small;
 }
+
+.user-info {
+    font-weight: 200;
+    color: gray;
+    width: 12rem;
+}
