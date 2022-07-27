@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ordersApi from '../api/orders.js'
 import '../stylesheet.css'
 
 const CreateOrder = (props) => {
@@ -6,6 +7,14 @@ const CreateOrder = (props) => {
   const [Name, setName]=useState('John Vinskey')
   const [Address, setAddress]=useState('3/12 Kings Street, Manchester')
 
+  window.order= {
+    createdAt: '',
+    customerId: Id,
+    customerName: Name,
+    address: Address,
+    pinCode: ''
+   }
+   
   const handleId = (event) => {
     event.preventDefault();
     setId(event.target.value);
@@ -18,11 +27,10 @@ const CreateOrder = (props) => {
     event.preventDefault();
     setAddress(event.target.value);
   }
-  const handleClick = (event) => {
+  async function handleClick(event) {
     event.preventDefault();
-    console.log("Customer Id:"+Id);
-    console.log("Customer Name:"+Name);
-    console.log("Address:"+Address);
+    const json = await ordersApi.postOrder(window.order);
+    console.log(json);
   }
 
   return (
