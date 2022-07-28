@@ -84,3 +84,8 @@ h6{
     color: gray;
     width: 12rem;
 }
+
+.after-submit {
+    margin-top: 40px;
+    font-size: small;
+}
