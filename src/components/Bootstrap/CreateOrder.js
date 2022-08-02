@@ -79,7 +79,7 @@ const CreateOrder = (props) => {
             </tr>
             <tr>
               <td>Customer Name*</td>
-              <td><input className='user-info' type='number' value={Name} onChange={handleName}
+              <td><input className='user-info' type='text' value={Name} onChange={handleName}
               placeholder='John Vinskey' required/></td>
             </tr>
             <tr>
