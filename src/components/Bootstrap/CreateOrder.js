@@ -3,12 +3,13 @@ import ordersApi from '../api/orders.js'
 import '../stylesheet.css'
 
 const CreateOrder = (props) => {
-  const [Id, setId]=useState('1234')
-  const [Name, setName]=useState('John Vinskey')
-  const [Address, setAddress]=useState('3/12 Kings Street, Manchester')
+  const [Id, setId]=useState('')
+  const [Name, setName]=useState('')
+  const [Address, setAddress]=useState('')
   const [Bool, setBool] = useState(null)
   const [Loading, setLoading] = useState(false)
-  
+  const [valid, setValid] = useState({isTrue:false,error:''})
+  let submit;
   window.order= {
     createdAt: '',
     customerId: Id,
@@ -35,17 +36,35 @@ const CreateOrder = (props) => {
     setBool(null);
     setAddress(event.target.value);
   }
-
-  async function handleClick(event) {
+  async function Validate() {
+    if (Id>9999){
+      setValid({isTrue:false,error:'Id can not be more than 4 digits'}); 
+      console.log('Checking Customer Id in Validate'); 
+      submit='no'}
+    else if(Name.length < 3){
+      setValid({isTrue:false,error:'Name should be of atleast 3 & atmost 15 characters'}); 
+      console.log('Checking Customer Name in Validate'); 
+      submit='no'}
+      else if(Address.length < 10){
+        setValid({isTrue:false,error:'Please provide detailed Address'}); 
+        console.log('Checking Address in Validate'); 
+        submit='no'}
+    else {setValid({isTrue:true,error:''}); console.log('All fields are good in validate'); submit='yes'}
+  }
+  async function handleSubmit(event) {
     event.preventDefault();
-    setLoading(true);
-    const json = await ordersApi.postOrder(window.order);
-    console.log(json);
-    setBool(json);
+    Validate();
+    if (submit==='yes'){
+      console.log('inside click function, generating api call')
+      setLoading(true);
+      const json = await ordersApi.postOrder(window.order);
+      console.log(json);
+      setBool(json);
+    }
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className='container'>
         <h4 align='center' style={{marginTop:'50px'}}>New Order</h4>
         <p align='center' className='instructions'>{props.instruction}</p>
@@ -55,21 +74,25 @@ const CreateOrder = (props) => {
           <tbody>
             <tr>
               <td>Customer Id*</td>
-              <td><input className='user-info' type='text' value={Id} onChange={handleId}/></td>
+              <td><input className='user-info' type='number' value={Id} onChange={handleId} 
+              placeholder='1234' required/></td>
             </tr>
             <tr>
               <td>Customer Name*</td>
-              <td><input className='user-info' type='text' value={Name} onChange={handleName}/></td>
+              <td><input className='user-info' type='number' value={Name} onChange={handleName}
+              placeholder='John Vinskey' required/></td>
             </tr>
             <tr>
-              <td>Address</td>
-              <td><input className='user-info' type='text' value={Address} onChange={handleAddress}/></td>
+              <td>Address*</td>
+              <td><input className='user-info' type='text' value={Address} onChange={handleAddress}
+              placeholder='3/110 Kings Street, Manchester'/></td>
             </tr>
           </tbody>
         </table> 
       </div>
+      {(valid.isTrue)?<p className='error'></p>:<p className='error' align='center'>{valid.error}</p>}
       <div align='center'>
-        <button className='submit' type='submit' onClick={handleClick}>Submit</button>
+        <button className='submit' type='submit'>Submit</button>
       </div>
       {(Bool)?(
         <div className='container-fluid' align='center'>

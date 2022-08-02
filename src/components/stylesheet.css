@@ -61,9 +61,7 @@ h6{
 }
 
 .submit {
-    margin: 0;
     height: 30px;
-    margin-top: 20px;
     width: 6rem;
     background-color: #8BFF00;
     color: white;
@@ -87,5 +85,13 @@ h6{
 
 .after-submit {
     margin-top: 40px;
+    font-size: small;
+}
+
+.error {
+    margin-top: 10px;
+    color: red;
+    font-style: italic;
+    font-weight: 200;
     font-size: small;
 }
