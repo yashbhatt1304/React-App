@@ -1,4 +1,4 @@
-const API_BASE = "https://62b22f4d20cad3685c8ac617.mockapi.io/mern/v1/";
+const API_BASE = "https://62b22f4d20cad3685c8ac617.mockapi.io/inventory/v1/";
 
 /**
  * Parses JSON responses for easier consumption.
