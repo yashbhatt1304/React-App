@@ -7,7 +7,7 @@ function getOrder(id) {
 }
 
 function postOrder(orderDetails) {
-  console.log('Request for new order creation: '+orderDetails);
+  console.log('Request for new order creation: '+ JSON.stringify(orderDetails));
   return apiPostRequest('POST', 'orders/' , orderDetails);
 }
 

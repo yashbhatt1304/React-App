@@ -7,7 +7,7 @@ function getProduct(id) {
   }
   
   function postProduct(productDetails) {
-    console.log('Request for adding new product: '+productDetails);
+    console.log('Request for adding new product: '+ JSON.stringify(productDetails));
     return apiPostRequest('POST', 'products/' , productDetails);
   }
 
