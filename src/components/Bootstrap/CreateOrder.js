@@ -39,26 +39,28 @@ const CreateOrder = (props) => {
   async function Validate() {
     if (Id>9999){
       setValid({isTrue:false,error:'Id can not be more than 4 digits'}); 
-      console.log('Checking Customer Id in Validate'); 
+      // console.log('Checking Customer Id in Validate'); 
       submit='no'}
     else if(Name.length < 3){
       setValid({isTrue:false,error:'Name should be of atleast 3 & atmost 15 characters'}); 
-      console.log('Checking Customer Name in Validate'); 
+      // console.log('Checking Customer Name in Validate'); 
       submit='no'}
       else if(Address.length < 10){
         setValid({isTrue:false,error:'Please provide detailed Address'}); 
-        console.log('Checking Address in Validate'); 
+        // console.log('Checking Address in Validate'); 
         submit='no'}
-    else {setValid({isTrue:true,error:''}); console.log('All fields are good in validate'); submit='yes'}
+    else {setValid({isTrue:true,error:''}); 
+      // console.log('All fields are good in validate'); 
+      submit='yes'}
   }
   async function handleSubmit(event) {
     event.preventDefault();
     Validate();
     if (submit==='yes'){
-      console.log('inside click function, generating api call')
+      // console.log('inside click function, generating api call')
       setLoading(true);
       const json = await ordersApi.postOrder(window.order);
-      console.log(json);
+      // console.log(json);
       setBool(json);
     }
   }

@@ -22,9 +22,11 @@ const GetOrderDetails = (props) => {
   async function Validate() {
     if (Number>9999){
       setValid({isTrue:false,error:'Order number can not be more than 4 digits'}); 
-      console.log('Checking Order number in Validate'); 
+      // console.log('Checking Order number in Validate'); 
       submit='no'}
-    else {setValid({isTrue:true,error:''}); console.log('All fields are good in validate'); submit='yes'}
+    else {setValid({isTrue:true,error:''}); 
+      // console.log('All fields are good in validate'); 
+      submit='yes'}
   }
   async function handleSubmit(event) {
     event.preventDefault();
@@ -32,7 +34,7 @@ const GetOrderDetails = (props) => {
     if (submit==='yes'){
       setLoading(true);
       const json = await ordersApi.getOrder(window.orderNo);
-      console.log(json);
+      // console.log(json);
       statusBool(json);
     }
   }

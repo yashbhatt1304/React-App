@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ordersApi from '../api/orders.js'
+import productsApi from '../api/products.js'
 import '../stylesheet.css'
 
 const AddProduct = (props) => {
@@ -46,22 +46,24 @@ const AddProduct = (props) => {
   async function Validate() {
     if (Id>9999){
       setValid({isTrue:false,error:'Id can not be more than 4 digits'}); 
-      console.log('Checking Customer Id in Validate'); 
+      // console.log('Checking Customer Id in Validate'); 
       submit='no'}
     else if (isNaN(Price)) {
       setValid({isTrue:false,error:'Price should be numerical value'}); 
-      console.log('Checking Price in Validate'); 
+      // console.log('Checking Price in Validate'); 
       submit='no'}
-    else {setValid({isTrue:true,error:''}); console.log('All fields are good in validate'); submit='yes'}
+    else {setValid({isTrue:true,error:''}); 
+      // console.log('All fields are good in validate'); 
+      submit='yes'}
   }
   async function handleSubmit(event) {
     event.preventDefault();
     Validate();
     if (submit==='yes'){
-      console.log('inside click function, generating api call')
+      // console.log('inside click function, generating api call')
       setLoading(true);
-      const json = await ordersApi.postProduct(window.product);
-      console.log(json);
+      const json = await productsApi.postProduct(window.product);
+      // console.log(json);
       setBool(json);
     }
   }

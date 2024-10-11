@@ -1,25 +1,15 @@
-import { apiGetRequest } from './utils';
-import { apiPostRequest} from './utils';
+import { apiGetRequest } from './ordersUtils';
+import { apiPostRequest} from './ordersUtils';
 
 function getOrder(id) {
-  console.log('in orders.js    orders/' + id);
+  console.log('Request for order details with order number: ' + id);
   return apiGetRequest('GET', 'orders/' + id);
 }
 
 function postOrder(orderDetails) {
-  console.log('in orders.js    orders/'+orderDetails);
+  console.log('Request for new order creation: '+orderDetails);
   return apiPostRequest('POST', 'orders/' , orderDetails);
 }
 
-function getProduct(id) {
-  console.log('in orders.js    products/' + id);
-  return apiGetRequest('GET', 'products/' + id);
-}
-
-function postProduct(productDetails) {
-  console.log('in orders.js    products/'+productDetails);
-  return apiPostRequest('POST', 'products/' , productDetails);
-}
-
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {getOrder, postOrder, postProduct, getProduct};
+export default {getOrder, postOrder};
