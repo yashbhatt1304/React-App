@@ -34,7 +34,7 @@ const GetProductDetails = (props) => {
     if (submit==='yes'){
       setLoading(true);
       const json = await productsApi.getProduct(window.productNo);
-    //   console.log(json);
+      console.log("Response for fetching Product Details with product id:"+ Number +" --> "+ JSON.stringify(json));
       statusBool(json);
     }
   }

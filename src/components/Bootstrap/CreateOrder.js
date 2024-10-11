@@ -60,7 +60,7 @@ const CreateOrder = (props) => {
       // console.log('inside click function, generating api call')
       setLoading(true);
       const json = await ordersApi.postOrder(window.order);
-      // console.log(json);
+      console.log("Response for creating new order --> "+ JSON.stringify(json));
       setBool(json);
     }
   }

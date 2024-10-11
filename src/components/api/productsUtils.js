@@ -50,7 +50,6 @@ export async function apiGetRequest(method, path) {
   const finalPath = API_BASE + path;
   // console.log(finalPath);
   const response = await fetch(finalPath, options);
-  console.log("Response for fetching order details: "+response.body);
 
   return parseJsonResponse(response);
 }
@@ -65,7 +64,6 @@ export async function apiPostRequest(method, path, body) {
       'Content-type':'application/json'
     }
   });
-  console.log("Response for creating new order: "+response.body);
 
   return parseJsonResponse(response);
 }

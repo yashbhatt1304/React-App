@@ -63,7 +63,7 @@ const AddProduct = (props) => {
       // console.log('inside click function, generating api call')
       setLoading(true);
       const json = await productsApi.postProduct(window.product);
-      // console.log(json);
+      console.log("Response for creating new product --> "+ JSON.stringify(json));
       setBool(json);
     }
   }

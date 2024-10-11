@@ -34,7 +34,7 @@ const GetOrderDetails = (props) => {
     if (submit==='yes'){
       setLoading(true);
       const json = await ordersApi.getOrder(window.orderNo);
-      // console.log(json);
+      console.log("Response for fetching Order Details with order id:"+ Number +" --> "+ JSON.stringify(json));
       statusBool(json);
     }
   }
