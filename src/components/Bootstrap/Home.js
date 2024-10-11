@@ -10,12 +10,22 @@ const Home = () => {
             <ul className="list-group list-group-flush">
                 <li className="list-group-item home-list">
                     <Link className="nav-details" to="/createorder">
-                        <p style={{margin:'auto'}}>New Order</p>
+                        <p style={{margin:'auto'}}>Create New Order</p>
                     </Link>
                 </li>
-                <li className="list-group-item">
+                <li className="list-group-item home-list">
                     <Link className="nav-details" to="/getorderdetails">
-                        <p style={{margin:'auto'}}>Get Details</p>
+                        <p style={{margin:'auto'}}>Get Order Details</p>
+                    </Link>
+                </li>
+                <li className="list-group-item home-list">
+                    <Link className="nav-details" to="/addproduct">
+                        <p style={{margin:'auto'}}>Add New Product</p>
+                    </Link>
+                </li>
+                <li className="list-group-item home-list">
+                    <Link className="nav-details" to="/getproductdetails">
+                        <p style={{margin:'auto'}}>Get Product Details</p>
                     </Link>
                 </li>
             </ul>

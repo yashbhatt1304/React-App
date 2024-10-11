@@ -11,5 +11,15 @@ function postOrder(orderDetails) {
   return apiPostRequest('POST', 'orders/' , orderDetails);
 }
 
+function getProduct(id) {
+  console.log('in orders.js    products/' + id);
+  return apiGetRequest('GET', 'products/' + id);
+}
+
+function postProduct(productDetails) {
+  console.log('in orders.js    products/'+productDetails);
+  return apiPostRequest('POST', 'products/' , productDetails);
+}
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {getOrder, postOrder};
+export default {getOrder, postOrder, postProduct, getProduct};
