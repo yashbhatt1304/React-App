@@ -1,3 +1,5 @@
+import { httpRequestDurationMicroseconds } from './metrics';
+
 const API_BASE = "https://62b22f4d20cad3685c8ac617.mockapi.io/inventory/v1/";
 
 /**
@@ -32,7 +34,7 @@ export async function parseJsonResponse(response) {
     error.response = response;
     error.responseJson = json;
 
-    throw error;
+    // throw error;
   }
 }
 
@@ -46,24 +48,31 @@ export async function parseJsonResponse(response) {
  * @returns {Promise<{}>} As returned by {@link parseJsonResponse}
  */
 export async function apiGetRequest(method, path) {
+  const end = httpRequestDurationMicroseconds.startTimer();
+
   const options = { method };
   const finalPath = API_BASE + path;
   // console.log(finalPath);
   const response = await fetch(finalPath, options);
 
+  end({ route: '/data', code: response.status });
   return parseJsonResponse(response);
 }
 
 export async function apiPostRequest(method, path, body) {
-  const finalPath = API_BASE + path;
-  // console.log(finalPath);
-  const response = await fetch(finalPath, {
+  const end = httpRequestDurationMicroseconds.startTimer();
+  
+  const options = {
     method: 'POST',
     body: JSON.stringify(body),
     headers:{
       'Content-type':'application/json'
     }
-  });
+  }
+  const finalPath = API_BASE + path;
+  // console.log(finalPath);
+  const response = await fetch(finalPath, options);
 
+  end({ route: '/data', code: response.status });
   return parseJsonResponse(response);
 }
